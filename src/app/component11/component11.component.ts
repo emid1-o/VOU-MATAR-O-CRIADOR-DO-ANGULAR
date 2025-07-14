@@ -11,7 +11,7 @@ export class Component11Component {
 
   formulario = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    idade: new FormControl(null, [Validators.min(0), Validators.max(99)]),
+    idade: new FormControl(null, [Validators.required,Validators.min(0), Validators.max(99)]),
     cidade: new FormControl('', [Validators.required, Validators.minLength(3)])
 
   })

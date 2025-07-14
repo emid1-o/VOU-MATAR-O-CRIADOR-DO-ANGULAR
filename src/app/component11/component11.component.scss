@@ -21,3 +21,14 @@ table {
     width: 1000px;
     margin-inline: auto;
 }
+
+.alert {
+    padding: 1px;
+    color: red;
+    background-color: white;
+    border: white;
+    margin-bottom: 0px;
+    justify-self: left;
+    font: "Amazon Ember", Arial, sans-serif;
+    font-size: 14px;
+}
