@@ -1,0 +1,23 @@
+@if (media >= 7) {
+    <p>passou</p>
+} @else if (media >= 4) {
+    <p>recuperação</p>
+} @else {
+    <p>reprovado</p>
+}
+
+@for (item of nomes; track $index) {
+    <p>{{item}}</p>
+}
+
+@switch (linguagem.toUpperCase()) {
+    @case ("HTML") { 
+        <p>Linguagem de marcação</p>
+    }
+    @case ("JS") {
+        <p>Linguagem de programação</p>
+    }
+    @default {
+        <p>Não encontrado</p>
+    }
+}
