@@ -2,73 +2,84 @@
 
     <!--NOME-->
     @if (formulario.get('nome').hasError('required') && formulario.get('nome').touched) {
-        <p class="alert alert-warning">O campo nome é obrigatório.</p>
+    <p class="alert alert-warning">O campo nome é obrigatório.</p>
     }
 
     @if (formulario.get('nome').hasError('minlength') && formulario.get('nome').touched) {
-        <p class="alert alert-warning">O campo nome precisa ter mais de 3 letras.</p>
+    <p class="alert alert-warning">O campo nome precisa ter mais de 3 letras.</p>
     }
-  <div class="form-floating mb-3">
-    <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
-    <label for="nome">Nome</label>
-  </div>
+    <div class="form-floating mb-3">
+        <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
+        <label for="nome">Nome</label>
+    </div>
 
-  <!--IDADE-->
+    <!--IDADE-->
 
     @if (formulario.get('idade').hasError('required') && formulario.get('idade').touched) {
-        <p class="alert alert-warning">O campo idade é obrigatório.</p>
+    <p class="alert alert-warning">O campo idade é obrigatório.</p>
     }
 
     @if (formulario.get('idade').hasError('min') && formulario.get('idade').touched) {
 
-        <p class="alert alert-warning">Idade tem que ser maior ou igual a 0</p>
+    <p class="alert alert-warning">Idade tem que ser maior ou igual a 0</p>
     }
 
     @if (formulario.get('idade').hasError('max') && formulario.get('idade').touched) {
 
-        <p class="alert alert-warning">Idade tem que ser menor ou igual a 99</p>
+    <p class="alert alert-warning">Idade tem que ser menor ou igual a 99</p>
     }
 
-  <div class="form-floating mb-3">
-    <input type="number" formControlName="idade" class="form-control" id="idade" placeholder="Idade">
-    <label for="idade">Idade</label>
-  </div>
+    <div class="form-floating mb-3">
+        <input type="number" formControlName="idade" class="form-control" id="idade" placeholder="Idade">
+        <label for="idade">Idade</label>
+    </div>
 
-  <!--CIDADE-->
+    <!--CIDADE-->
 
-  @if (formulario.get('cidade').hasError('required') && formulario.get('cidade').touched) {
-        <p class="alert alert-warning">O campo cidade é obrigatório.</p>
+    @if (formulario.get('cidade').hasError('required') && formulario.get('cidade').touched) {
+    <p class="alert alert-warning">O campo cidade é obrigatório.</p>
     }
 
     @if (formulario.get('cidade').hasError('minlength') && formulario.get('cidade').touched) {
-        <p class="alert alert-warning">O campo cidade precisa ter mais de 3 letras.</p>
+    <p class="alert alert-warning">O campo cidade precisa ter mais de 3 letras.</p>
     }
-  <div class="form-floating mb-3">
-    <input type="text" formControlName="cidade" class="form-control" id="cidade" placeholder="Cidade">
-    <label for="cidade">Cidade</label>
-  </div>
+    <div class="form-floating mb-3">
+        <input type="text" formControlName="cidade" class="form-control" id="cidade" placeholder="Cidade">
+        <label for="cidade">Cidade</label>
+    </div>
 
 
-  <br>
+    <br>
 
-  <input type="button" value="Cadastrar" class="btn btn-primary">
-  <input type="button" value="Alterar" class="btn btn-primary">
-  <input type="button" value="Remover" class="btn btn-primary">
-  <input type="button" value="Cancelar" class="btn btn-primary">
+    @if (btnCadastrar) {
+        <input type="button" (click)="cadastrar()" value="Cadastrar" class="btn btn-primary" [disabled]="formulario.invalid">
+    }@else {
+        <input type="button" value="Alterar" (click)="alterar()" class="btn btn-primary" [disabled]="formulario.invalid">
+        <input type="button" value="Remover" (click)="remover()" class="btn btn-primary">
+        <input type="button" value="Cancelar" (click)="cancelar()" class="btn btn-primary">
+    }
 </form>
 
-<div class = "pano">
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Cidade</th>
-            <th>Selecionar</th>
-        </tr>
-    </thead>
+<div class="pano">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Cidade</th>
+                <th>Selecionar</th>
+            </tr>
+        </thead>
 
-    <tbody></tbody>
-</table>
+        <tbody>
+            <tr *ngFor="let v of vetor; index as indice">
+                <td>{{indice}}</td>
+                <td>{{v.nome}}</td>
+                <td>{{v.idade}}</td>
+                <td>{{v.cidade}}</td>
+                <td><button class="btn btn-primary" (click)="selecionar(indice)">Selecionar</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
